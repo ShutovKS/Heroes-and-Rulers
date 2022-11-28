@@ -15,23 +15,25 @@ public class CameraControl : MonoBehaviour
         oX = GameObject.Find("camera").transform.position.x;
         float oY = GameObject.Find("camera").transform.position.y;
         float size = GetComponent<Camera>().orthographicSize;
-
+        float move = 0.065f + (size/100);
+        if (Input.GetKey(KeyCode.LeftShift))
+            move *= 2;
         //перемещение камеры
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            oX += 0.0075f;
+            oX += move;
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            oX -= 0.0075f;
+            oX -= move;
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            oY += 0.0075f;
+            oY += move;
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            oY -= 0.0075f;
+            oY -= move;
         }
 
 
