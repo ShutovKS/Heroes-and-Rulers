@@ -2,21 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class NPCMovement : MonoBehaviour
 {
-    private NavMeshAgent nav;
-
-
-    private void Start()
+    void Start()
     {
-        nav = GetComponent<NavMeshAgent>();
-    }
-
-    private void Update()
-    {
-        nav.SetDestination(GameObject.Find("Замок").transform.position);
-
+        // Получение компонента агента
+        UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        // Указаие точки назначения
+        agent.destination = GameObject.Find("Статуя").transform.position;
     }
 }
