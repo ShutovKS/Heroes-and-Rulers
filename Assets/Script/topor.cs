@@ -4,28 +4,24 @@ using UnityEngine;
 
 public class topor : MonoBehaviour
 {
-    float z = 0;
-    bool tf=true;
-    void Update()
+    int z = 0;
+    bool tf = true;
+    void FixedUpdate()
     {
-        if (z>=-90f)
+        if (tf)
         {
-            z -= 0.003f;
-            //if (z <= -90)
-            //tf = false;
+            z -= Random.Range(7,9);
+            transform.Rotate(0, 0, -Random.Range(7, 9));
+            if (z <= -75)
+                tf = false;
         }
-        if (z <= -90f) 
-        { 
-            z = 0f;
+        else
+        {
+            z += Random.Range(7, 9);
+            transform.Rotate(0, 0, Random.Range(7, 9));
+            if (z >= 0)
+                tf = true;
+
         }
-        //if (!tf)
-        //{
-        //    z += 0.003f;
-        //    if (z >= 0)
-        //        tf = true;
-        //}
-        transform.Rotate(0,0,z);
-        
     }
-    
 }
